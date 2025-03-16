@@ -39,7 +39,7 @@ namespace WeatherDataService.Services
                 }
 
                 // Wait for 10 minutes before next fetch
-                await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);
+                await Task.Delay(TimeSpan.FromMinutes(10), stoppingToken);
             }
 
         }
