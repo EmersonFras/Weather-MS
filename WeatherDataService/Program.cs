@@ -16,6 +16,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<WeatherContext>(options =>
     options.UseSqlite(connectionString));
 
+builder.Services.AddSingleton<Emitter>();
 builder.Services.AddScoped<Fetch>();
 builder.Services.AddHostedService<WeatherFetcher>();
 
