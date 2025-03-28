@@ -11,13 +11,5 @@ It is designed to integrate with a Raspberry Pi project that connects multiple m
 - Publishes updates to a **RabbitMQ topic exchange** for other microservices to consume.  
 - Exposes a **single GET HTTP endpoint** to fetch the current temperature and weather code.
 
-## Architecture
- ┌──────────────┐      ┌────────────────┐      ┌──────────────┐
- │  Weather API │ ───▶ │  RabbitMQ Bus  │ ───▶ │  Subscribers │
- └──────────────┘      └────────────────┘      └──────────────┘
-         │                                           │
-         ▼                                           ▼
-  [SQLite Cache]                            [Raspberry Pi LED Matrix]
-                                            [Web Frontend API]
 
 
