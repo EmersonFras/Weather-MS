@@ -14,8 +14,7 @@ namespace WeatherDataService.Utils
 
         public Emitter()
         {
-            var hostname = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost";
-            _factory = new ConnectionFactory { HostName = hostname };
+            _factory = new ConnectionFactory { HostName = "rabbitmq" };
             _initializeTask = EmitterAsync();
         }
 

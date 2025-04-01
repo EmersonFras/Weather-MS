@@ -187,6 +187,12 @@ DocProject/Help/html
 # Click-Once directory
 publish/
 
+# Ignore SQLite databases and temporary files
+*.db
+*.db-wal
+*.db-shm
+
+
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
