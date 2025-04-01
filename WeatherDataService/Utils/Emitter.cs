@@ -14,7 +14,8 @@ namespace WeatherDataService.Utils
 
         public Emitter()
         {
-            _factory = new ConnectionFactory { HostName = "localhost" };
+            var hostname = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost";
+            _factory = new ConnectionFactory { HostName = hostname };
             _initializeTask = EmitterAsync();
         }
 
@@ -24,7 +25,7 @@ namespace WeatherDataService.Utils
             _connection = await _factory.CreateConnectionAsync();
             _channel = await _connection.CreateChannelAsync();
             
-            await _channel.ExchangeDeclareAsync(exchange: "weather_updates", type: ExchangeType.Topic);
+            await _channel.ExchangeDeclareAsync(exchange: "led_matrix", type: ExchangeType.Topic);
         }
 
         public async Task EmitAsync(string message, string topic)
@@ -32,7 +33,7 @@ namespace WeatherDataService.Utils
             await _initializeTask;
 
             var body = Encoding.UTF8.GetBytes(message);
-            await _channel.BasicPublishAsync(exchange: "weather_updates",
+            await _channel.BasicPublishAsync(exchange: "led_matrix",
                                      routingKey: topic,
                                      body: body);
         }
