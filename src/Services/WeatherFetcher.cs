@@ -14,6 +14,13 @@ namespace WeatherDataService.Services
             _scopeFactory = scopeFactory;
             _emitter = emitter;
         }
+
+        /*
+            Background service to fetch weather data from the API every 10 minutes.
+            The data is stored in the SQLite database.
+            The data is fetched using the Fetch class.
+            The data is emitted using the Emitter class.
+        */
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
 

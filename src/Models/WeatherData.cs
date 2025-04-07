@@ -1,5 +1,11 @@
 namespace WeatherDataService.Models
 {
+    /*
+        Model split into to classes to match the JSON response from the weather API.
+        The WeatherData class is the main class that contains the current weather data.
+        The Current class contains the current temperature and weather code.
+        The weather code is used to determine the weather condition.
+    */
     public class WeatherData
     {
         public int Id { get; set; } = 1;

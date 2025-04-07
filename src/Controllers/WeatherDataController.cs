@@ -16,15 +16,25 @@ public class WeatherDataController : ControllerBase
         _context = context;
     }
 
+    /*
+        Endpoint to get current temperature.
+        Rarely used, but useful for testing.
+        May be called by clients at startup to get the current temperature.
+    */
     //GET: /weatherdata
     [HttpGet]
     public async Task<ActionResult<WeatherData>> GetWeatherData()
     {
         try
         {
-#pragma warning disable CS8604 // Possible null reference argument.
-            return await _context.WeatherData.FindAsync(1);
-#pragma warning restore CS8604 // Possible null reference argument.
+            var weatherData = await _context.WeatherData.FindAsync(1);
+
+            if (weatherData == null)
+            {
+                return NotFound();
+            }
+
+            return weatherData;
         }
         catch (Exception ex)
         {
