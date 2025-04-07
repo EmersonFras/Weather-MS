@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim AS build
 WORKDIR /src
 # Copy everything in the Weather-MS folder into the container
 COPY . .
+RUN rm -f weather.db
 # Restore dependencies for the WeatherDataService project
 RUN dotnet restore WeatherDataService.csproj
 # Publish the project into the /app/out folder

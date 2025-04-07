@@ -13,7 +13,7 @@ namespace WeatherDataService.Utils
             _context = context;
         }
 
-        private readonly string URL = "https://api.open-meteo.com/v1/forecast?latitude=40&longitude=13&current=temperature_2m&current=weather_code&temperature_unit=fahrenheit";
+        private readonly string URL = "https://api.open-meteo.com/v1/forecast?latitude=40&longitude=-83&current=temperature_2m&current=weather_code&temperature_unit=fahrenheit";
         public async Task FetchWeatherData()
         {
             using (HttpClient client = new HttpClient())

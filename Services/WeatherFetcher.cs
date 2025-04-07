@@ -32,8 +32,10 @@ namespace WeatherDataService.Services
                         string weatherCode = weatherData.current.weather_code.ToString();
                         string temperature = weatherData.current.temperature_2m.ToString();
 
-                        await _emitter.EmitAsync(weatherCode, "update.weatercode");
+                        await _emitter.EmitAsync(weatherCode, "update.weathercode");
                         await _emitter.EmitAsync(temperature, "update.temperature");
+
+                        Console.WriteLine($"Updates, Temperature: {temperature}, Weather Code: {weatherCode}");
                     }
 
                 }
