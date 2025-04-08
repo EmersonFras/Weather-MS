@@ -39,6 +39,8 @@ namespace WeatherDataService.Services
                         string weatherCode = weatherData.current.weather_code.ToString();
                         string temperature = weatherData.current.temperature_2m.ToString();
 
+                        // Seperate topics for temperature and weather code
+                        // Emit the data to the event bus
                         await _emitter.EmitAsync(weatherCode, "update.weathercode");
                         await _emitter.EmitAsync(temperature, "update.temperature");
 
